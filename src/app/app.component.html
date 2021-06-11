@@ -1,0 +1,52 @@
+<!-- string interpolation -->
+<h1>{{pageTitle}}</h1>
+<!-- interpolation ends -->
+
+
+<!-- property binding -->
+<div>
+  <img [src]="imageUrl" alt="Image">
+</div>
+<!-- property binding ends -->
+
+
+<!-- event binding -->
+<div>
+  <button (click)="incrementCount()">Click</button>
+  <p>Clicked {{count}} times</p>
+</div>
+<!-- event binding ends -->
+
+
+<!-- two way binding -->
+<div>
+  <input type="text" [(ngModel)]="name">
+  <p>Welcome {{name}}</p>
+</div>
+<!--two way binding ends-->
+
+
+<!--split two way binding into property binding and event binding-->
+<div>
+  <input type="text" [ngModel]="userName" (ngModelChange)="greetDiana($event)">
+  <p>Welcome {{ userName }}</p>
+</div>
+
+
+<!--getter and setter method-->
+<div>
+  <input type="text" [(ngModel)]="customerName">
+  <p>Welcome {{customerName}}</p>
+</div>
+
+
+<!--using viewchild to access DOM element-->
+<!--steps
+  1. attach a template reference variable to the input element
+  2. create a property that will hold the reference to the DOM element in the app.component.ts class
+  3. we need to tell this property which DOM element it has to reference. For that we make use of viewChild decorator
+  4. implement the afterViewInit lifecycle hook-->
+<div>
+  <input #nameRef type="text" [(ngModel)]="name">
+  <p>Welcome {{name}}</p>
+</div>
